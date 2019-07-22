@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kubernetes-events-scaler
+  namespace: kubernetes-events-scaler
+spec:
+  selector:
+    matchLabels:
+      service: kubernetes-events-scaler-node
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        service: kubernetes-events-scaler-node
+    spec:
+      containers:
+      - image: patnaikshekhar/keda-kubernetes-events-scaler-node:1.1
+        name: consumer
+        environment:
+          DEST_NAMESPACE: events-sample
