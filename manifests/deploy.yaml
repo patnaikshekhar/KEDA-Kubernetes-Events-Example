@@ -14,7 +14,9 @@ spec:
         service: kubernetes-events-scaler-node
     spec:
       containers:
-      - image: patnaikshekhar/keda-kubernetes-events-scaler-node:1.1
+      - image: patnaikshekhar/keda-kubernetes-events-scaler-node:1.2
         name: consumer
-        environment:
-          DEST_NAMESPACE: events-sample
+        env:
+        - name: DEST_NAMESPACE
+          value: events-sample
+      serviceAccount: keda-events-sample

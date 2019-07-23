@@ -8,11 +8,11 @@ const k8sApi = kc.makeApiClient(k8s.CoreV1Api);
 const WAIT_TIME = 10
 
 const wait = (seconds) => 
-    new Promise((resolve, reject) => setTimeout(resolve, seconds * 1000))
+    new Promise((resolve) => setTimeout(resolve, seconds * 1000))
 
 const run = async () => {
     while(1) {
-        const response = await k8sApi.listNamespacedEvent('kubernetes-events-scaler')
+        const response = await k8sApi.listNamespacedEvent(process.env.DEST_NAMESPACE)
         const events = response.body.items
         if (events.length > 0) {
             const now = new Date()
