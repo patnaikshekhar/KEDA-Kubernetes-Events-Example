@@ -1,8 +1,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: kubernetes-events-scaler
-  namespace: kubernetes-events-scaler
+  name: keda-kubernetes-events-scaler-node
+  namespace: keda-kubernetes-events-scaler  
 spec:
   selector:
     matchLabels:
